@@ -1,0 +1,68 @@
+<style>
+/* app-main */
+.app-main {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+/* /app-main */
+
+.time-wrapper {    
+    text-align: center; 
+    font-size: 50px; 
+    font-weight: 900;
+}
+.date-wrapper {
+    padding: 10px 0 0 0;
+    text-align: center; 
+    font-size: 30px; 
+    font-weight: 100; 
+    color: #888888;
+}
+</style>    
+
+<main class="app-main">
+    <section class="dates-container">
+        <div class="time-wrapper"></div>
+        <div class="date-wrapper"></div>
+    </section>
+    <%- include('./abstract.ejs') %>
+</main>
+<script>
+document.addEventListener('DOMContentLoaded', function(evte) {
+    gInitialDatesShow()
+
+    /* ... */
+    window.setTimeout(() => {
+        gInitialWindowDisplay()
+    }, 550)
+})
+
+function gInitialDatesShow() {
+    let dateString = ``
+    let timeString = ``
+    const timeWrapperElement = document.querySelector(`.time-wrapper`)
+    const dateWrapperElement = document.querySelector(`.date-wrapper`)
+    execDatesShow()
+
+    /* dates 显示执行器 */
+    function execDatesShow() {
+        const nowDate = new Date()
+        const v1 = nowDate.toLocaleDateString()
+        const v2 = nowDate.toLocaleTimeString()
+        if (v1 === dateString && v2 === timeString) {
+            window.requestAnimationFrame(execDatesShow)
+            return
+        }
+        dateWrapperElement.innerHTML = dateString = v1
+        timeWrapperElement.innerHTML = timeString = v2
+        window.requestAnimationFrame(execDatesShow)
+    }
+}
+</script>
