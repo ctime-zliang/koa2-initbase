@@ -15,6 +15,7 @@ const auth = require('./middleware/auth')
 const mstatic = require('./middleware/static')
 const dyeLog = require('./middleware/dyelog')
 const logger = require('./lib/simple-logger')
+const middleware = require('./middleware')
 
 const app = new koa()
 
@@ -28,33 +29,8 @@ koaEjs(app, {
 	cache: false,
 	debug: false,
 })
-app.use(
-	koaCors({
-		origin(ctx) {
-			return ctx.header.origin
-		},
-		exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-		credentials: true,
-		allowMethods: ['GET', 'POST', 'DELETE'],
-		allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-	})
-)
-app.use(bodyParser())
-app.use(parameter({}))
-app.use(auth({}))
-app.use(
-	dyeLog({
-		...config.baseConfig,
-		debug: true,
-	})
-)
-app.use(
-	mstatic({
-		staticPath: path.join(__dirname, config.baseConfig.staticDir),
-	})
-)
 
-router(app)
+middleware(app, __dirname)
 
 app.on('error', (error, ctx) => {
 	const result = errorHandler(error, ctx)
