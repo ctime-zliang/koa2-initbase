@@ -70,7 +70,8 @@ const handleDyeLog =(ctx, debug = true) => {
 
 	/* ... */
 	const footer = []
-	footer.push('response body: ' + trim((ctx.response.body || '').replace(/[\n]/g, '')))
+	const body = String(ctx.response.body || '')
+	footer.push('response body: ' + trim(body.replace(/[\n]/g, '')))
 	ctx._logs.push(footer)
 
 	/* ... */

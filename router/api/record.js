@@ -32,5 +32,5 @@ module.exports = [
 		method: 'POST',
 		path: `${prefixUrl}/update`,
 		action: RtestController.invokeAction('updateItem'),
-	},
+	}
 ]
