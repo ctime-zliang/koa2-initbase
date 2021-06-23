@@ -10,7 +10,7 @@ module.exports = koaApp => {
 		koaApp.use(router.allowedMethods())
 	})
 	koaApp.use(async (ctx, next) => {
-		if (errRouterMap[String(ctx.status)]) {
+		if (!ctx.routerMatched && errRouterMap[String(ctx.status)]) {
 			await errRouterMap[String(ctx.status)](ctx)
 		}
 		await next()
