@@ -6,10 +6,10 @@
 	"scripts": {
 		"prettier-all": "prettier --write .",
 		"server:dev": "nodemon --config ./nodemon.json",
-		"server:start": "pm2 start ./config/pm2.config.js",
-		"server:restart": "pm2 restart ./config/pm2.config.js",
-		"server:stop": "pm2 stop ./config/pm2.config.js",
-		"server:log": "pm2 log ./config/pm2.config.js",
+		"server:pmstart": "pm2 start ./config/pm2.config.js",
+		"server:pmrestart": "pm2 restart ./config/pm2.config.js",
+		"server:pmstop": "pm2 stop ./config/pm2.config.js",
+		"server:pmlog": "pm2 log ./config/pm2.config.js",
 		"server:test": "node ./test.js"
 	},
 	"author": "",
