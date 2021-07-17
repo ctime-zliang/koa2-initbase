@@ -49,7 +49,7 @@ const log = (type, ctx, msg) => {
 		ctx._logs.push(msg)
 	}
 }
-const handleDyeLog =(ctx, debug = true) => {
+const handleDyeLog = (ctx, debug = true) => {
 	ctx._logs = ctx._logs || []
 
 	/* ... */
@@ -90,5 +90,5 @@ module.exports = {
 	info,
 	warn,
 	error,
-	log
+	log,
 }

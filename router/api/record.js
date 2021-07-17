@@ -32,5 +32,5 @@ module.exports = [
 		method: 'POST',
 		path: `${prefixUrl}/updateItem`,
 		action: RecordController.invokeAction('updateItem'),
-	}
+	},
 ]

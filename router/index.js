@@ -14,5 +14,5 @@ module.exports = koaApp => {
 			await errRouterMap[String(ctx.status)](ctx)
 		}
 		await next()
-	})	
+	})
 }
