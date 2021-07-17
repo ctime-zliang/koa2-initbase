@@ -4,6 +4,6 @@
 	"ext": "js json",
 	"watch": ["config/", "controller/", "lib/", "middleware/", "model/", "router/", "service/", "utils/", "app.js", "error.js"],
 	"ignore": ["test/*.spec.js"],
-	"delay": "1000",
+	"delay": 200,
 	"exec": "node ./app.js"
 }
