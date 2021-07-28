@@ -9,16 +9,16 @@ const middleware = require('./middleware')
 
 const app = new koa()
 
-app.use(async (ctx, next) => {
-	await next()
-})
-koaEjs(app, {
-	root: path.join(__dirname, config.baseConfig.viewDir),
-	layout: 'template',
-	viewExt: 'ejs',
-	cache: false,
-	debug: false,
-})
+// app.use(async (ctx, next) => {
+// 	await next()
+// })
+// koaEjs(app, {
+// 	root: path.join(__dirname, config.baseConfig.viewDir),
+// 	layout: 'template',
+// 	viewExt: 'ejs',
+// 	cache: false,
+// 	debug: false,
+// })
 
 middleware(app, __dirname)
 

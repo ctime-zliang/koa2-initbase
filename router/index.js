@@ -7,7 +7,7 @@ const routerList = [webRouter, apiRouter]
 module.exports = koaApp => {
 	routerList.forEach((router, index) => {
 		koaApp.use(router.routes())
-		koaApp.use(router.allowedMethods())
+		// koaApp.use(router.allowedMethods())
 	})
 	koaApp.use(async (ctx, next) => {
 		if (!ctx.routerMatched && errRouterMap[String(ctx.status)]) {

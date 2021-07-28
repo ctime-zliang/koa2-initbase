@@ -10,30 +10,33 @@ const mstatic = require('./static')
 const dyeLog = require('./dyelog')
 
 module.exports = (app, __rootDirname) => {
-	app.use(
-		koaCors({
-			origin(ctx) {
-				return ctx.header.origin
-			},
-			exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
-			credentials: true,
-			allowMethods: ['GET', 'POST', 'DELETE'],
-			allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
-		})
-	)
-	app.use(bodyParser())
-	app.use(parameter({}))
-	app.use(auth({}))
-	app.use(
-		dyeLog({
-			...config.baseConfig,
-			debug: true,
-		})
-	)
-	app.use(
-		mstatic({
-			staticPath: path.join(__rootDirname, config.baseConfig.staticDir),
-		})
-	)
+	// app.use(
+	// 	koaCors({
+	// 		origin(ctx) {
+	// 			return ctx.header.origin
+	// 		},
+	// 		exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'],
+	// 		credentials: true,
+	// 		allowMethods: ['GET', 'POST', 'DELETE'],
+	// 		allowHeaders: ['Content-Type', 'Authorization', 'Accept'],
+	// 	})
+	// )
+	// app.use(bodyParser())
+	// app.use(parameter({}))
+	// app.use(auth({}))
+	// app.use(
+	// 	dyeLog({
+	// 		...config.baseConfig,
+	// 		debug: true,
+	// 	})
+	// )
+	// app.use(
+	// 	mstatic({
+	// 		staticPath: path.join(__rootDirname, config.baseConfig.staticDir),
+	// 	})
+	// )
 	router(app)
+	app.use(async (ctx, next) => {
+		console.log(`After Router`)
+	})
 }
