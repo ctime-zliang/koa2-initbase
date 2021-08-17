@@ -38,4 +38,8 @@ module.exports = (app, __rootDirname) => {
 		})
 	)
 	router(app)
+	app.use(async (ctx, next) => {
+		console.log(`==================>>>>> After Router`)
+		await next()
+	})
 }
