@@ -1,14 +1,13 @@
-const Service = require('../../lib/Service')
 const HomeModel = require('../model/home')
 
-class HomeService extends Service {
+class HomeService {
 	constructor() {
-		super()
+		this.homeModel = new HomeModel()
 	}
 
 	async fetchData() {
 		try {
-			const fetchListRes = await HomeModel.fetchData()
+			const fetchListRes = await this.homeModel.fetchData()
 			return { ...fetchListRes, serviceKey: 'Key inserted by Service' }
 		} catch (e) {
 			throw e
@@ -16,4 +15,4 @@ class HomeService extends Service {
 	}
 }
 
-module.exports = new HomeService()
+module.exports = HomeService

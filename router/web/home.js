@@ -5,6 +5,6 @@ module.exports = [
 		desc: 'Home Page',
 		method: 'GET',
 		path: '/',
-		action: HomeController.invokeView('render'),
+		action: HomeController.invokeRender('render'),
 	},
 ]

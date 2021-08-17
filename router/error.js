@@ -5,7 +5,7 @@ module.exports = {
 		ctx.status = 404
 		if (ctx.method.toLowerCase() === 'post') {
 			const res = new Response()
-			res.setRetCode(-1).setStatus(ctx.status).setData(null).setMessage('API Not Found').flush(ctx)
+			res.setRetCode(-1).setStatus(ctx.status).setText('API Not Found').flush(ctx)
 			return ''
 		}
 		ctx.body = `

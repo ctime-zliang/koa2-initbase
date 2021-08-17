@@ -92,4 +92,4 @@ class RecordModel extends Mysql {
 	}
 }
 
-module.exports = new RecordModel()
+module.exports = RecordModel

@@ -1,6 +1,7 @@
 const koa = require('koa')
 const path = require('path')
 const koaEjs = require('koa-ejs')
+const init = require('./lib/init')
 const config = require('./config/config')
 const envConfig = require('./config/env.export')
 const errorHandler = require('./error')
@@ -9,9 +10,8 @@ const middleware = require('./middleware')
 
 const app = new koa()
 
-app.use(async (ctx, next) => {
-	await next()
-})
+init(app)
+
 koaEjs(app, {
 	root: path.join(__dirname, config.baseConfig.viewDir),
 	layout: 'template',

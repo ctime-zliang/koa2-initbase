@@ -14,4 +14,4 @@ class HomeModel extends Mysql {
 	}
 }
 
-module.exports = new HomeModel()
+module.exports = HomeModel

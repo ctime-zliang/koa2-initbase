@@ -4,14 +4,13 @@ const RecordStatus = require('../status/record')
 
 class RecordController extends Controller {
 	constructor() {
-		super({
-			controllerName: 'Record Controller',
-		})
+		super()
+		this.recordService = new RecordService()
 	}
 
 	async fetchList(ctx, res) {
-		const serRes = await RecordService.invokeService('fetchList', ctx.requestParams)
-		res.setData({ ...serRes })
+		const serRes = await this.recordService.fetchList(ctx.requestParams)
+		res.setJson({ ...serRes })
 	}
 
 	async addItem(ctx, res) {
@@ -20,13 +19,13 @@ class RecordController extends Controller {
 			res.setRetCode(RecordStatus.controller.NO_TITLE.ret)
 			return
 		}
-		const addItemSerRes = await RecordService.invokeService('addItem', ctx.requestParams)
+		const addItemSerRes = await this.recordService.addItem(ctx.requestParams)
 		if (typeof addItemSerRes.ret !== 'undefined' && addItemSerRes.ret !== 0) {
 			res.setMessage(addItemSerRes.msg)
 			res.setRetCode(addItemSerRes.ret)
 			return
 		}
-		res.setData({ ...addItemSerRes })
+		res.setJson({ ...addItemSerRes })
 	}
 
 	async delItems(ctx, res) {
@@ -35,13 +34,13 @@ class RecordController extends Controller {
 			res.setRetCode(RecordStatus.controller.INVALID_IDS.ret)
 			return
 		}
-		const delItemSerRes = await RecordService.invokeService('delItems', ctx.requestParams)
+		const delItemSerRes = await this.recordService.delItems(ctx.requestParams)
 		if (typeof delItemSerRes.ret !== 'undefined' && delItemSerRes.ret !== 0) {
 			res.setMessage(delItemSerRes.msg)
 			res.setRetCode(delItemSerRes.ret)
 			return
 		}
-		res.setData({ ...delItemSerRes })
+		res.setJson({ ...delItemSerRes })
 	}
 
 	async fetchItem(ctx, res) {
@@ -50,13 +49,13 @@ class RecordController extends Controller {
 			res.setRetCode(RecordStatus.controller.INVALID_ID.ret)
 			return
 		}
-		const fetchItemSerRes = await RecordService.invokeService('fetchItem', ctx.requestParams)
+		const fetchItemSerRes = await this.recordService.fetchItem(ctx.requestParams)
 		if (typeof fetchItemSerRes.ret !== 'undefined' && fetchItemSerRes.ret !== 0) {
 			res.setMessage(fetchItemSerRes.msg)
 			res.setRetCode(fetchItemSerRes.ret)
 			return
 		}
-		res.setData({ ...fetchItemSerRes })
+		res.setJson({ ...fetchItemSerRes })
 	}
 
 	async updateItem(ctx, res) {
@@ -70,13 +69,13 @@ class RecordController extends Controller {
 			res.setRetCode(RecordStatus.controller.NO_TITLE.ret)
 			return
 		}
-		const updateItemSerRes = await RecordService.invokeService('updateItem', ctx.requestParams)
+		const updateItemSerRes = await this.recordService.updateItem(ctx.requestParams)
 		if (typeof updateItemSerRes.ret !== 'undefined' && updateItemSerRes.ret !== 0) {
 			res.setMessage(updateItemSerRes.msg)
 			res.setRetCode(updateItemSerRes.ret)
 			return
 		}
-		res.setData({ ...updateItemSerRes })
+		res.setJson({ ...updateItemSerRes })
 	}
 }
 

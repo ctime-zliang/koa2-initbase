@@ -16,7 +16,7 @@ module.exports = options => {
 			const redirectLink = `${ctx.request.protocol}://${ctx.request.host}`
 			const msg = `<div>示例性权限验证: 请先访问<a href="${redirectLink}" target="blank">首页</a>以生成一个认证 cookie 后再访问此地址</div>`
 			const res = new Response()
-			res.setKeepJSON(true).setStatus(httpStatus.Forbidden.status).setRetCode(-1).setMessage(msg).setData(null).flush(ctx)
+			res.setStatus(httpStatus.Forbidden.status).setText(msg).flush(ctx)
 			return
 		}
 		await next()

@@ -1,17 +1,16 @@
-const Service = require('../../lib/Service')
 const RecordModel = require('../model/record')
 const RecordStatus = require('../status/record')
 
-class RecordService extends Service {
+class RecordService {
 	constructor() {
-		super()
+		this.recordModel = new RecordModel()
 	}
 
 	async fetchList(params) {
 		try {
 			const pageIndex = +params.pageIndex || 1
 			const pageSize = +params.pageSize || 5
-			const fetchListRes = await RecordModel.fetchList({ ...params, pageSize, pageIndex })
+			const fetchListRes = await this.recordModel.fetchList({ ...params, pageSize, pageIndex })
 			return {
 				pageIndex,
 				pageSize,
@@ -25,11 +24,11 @@ class RecordService extends Service {
 
 	async addItem(params) {
 		try {
-			const addItemRes = await RecordModel.addItem(params)
+			const addItemRes = await this.recordModel.addItem(params)
 			if (!addItemRes.affectedRows) {
 				return { ...RecordStatus.service.WRITE_ITEM_FAILER }
 			}
-			const fetchItemRes = await RecordModel.fetchItem({ id: addItemRes.insertId })
+			const fetchItemRes = await this.recordModel.fetchItem({ id: addItemRes.insertId })
 			if (!fetchItemRes || !fetchItemRes.length) {
 				return { ...RecordStatus.service.READ_NEW_ROW_FAILER }
 			}
@@ -42,7 +41,7 @@ class RecordService extends Service {
 	async delItems(params) {
 		try {
 			for (let i = 0; i < params.ids.length; i++) {
-				const delItemRes = await RecordModel.delItem({ id: params.ids[i] })
+				const delItemRes = await this.recordModel.delItem({ id: params.ids[i] })
 				if (!delItemRes.affectedRows) {
 					throw { ...RecordStatus.service.DELETE_ITEM_FAILER }
 				}
@@ -55,7 +54,7 @@ class RecordService extends Service {
 
 	async fetchItem(params) {
 		try {
-			const fetchItemRes = await RecordModel.fetchItem({ id: params.id })
+			const fetchItemRes = await this.recordModel.fetchItem({ id: params.id })
 			if (!fetchItemRes || !fetchItemRes.length) {
 				return { ...RecordStatus.service.READ_TARGET_ROW_FAILER }
 			}
@@ -67,11 +66,11 @@ class RecordService extends Service {
 
 	async updateItem(params) {
 		try {
-			const updateItemmRes = await RecordModel.updateItem(params)
+			const updateItemmRes = await this.recordModel.updateItem(params)
 			if (!updateItemmRes.affectedRows) {
 				return { ...RecordStatus.service.UPDATE_ITEM_FAILER }
 			}
-			const fetchItemRes = await RecordModel.fetchItem({ id: params.id })
+			const fetchItemRes = await this.recordModel.fetchItem({ id: params.id })
 			if (!fetchItemRes || !fetchItemRes.length) {
 				return { ...RecordStatus.service.READ_TARGET_ROW_FAILER }
 			}
@@ -82,4 +81,4 @@ class RecordService extends Service {
 	}
 }
 
-module.exports = new RecordService()
+module.exports = RecordService

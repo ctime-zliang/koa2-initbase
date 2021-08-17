@@ -8,8 +8,10 @@ const parameter = require('./parameter')
 const auth = require('./auth')
 const mstatic = require('./static')
 const dyeLog = require('./dyelog')
+const interceptor = require('./interceptor')
 
 module.exports = (app, __rootDirname) => {
+	app.use(interceptor())
 	app.use(
 		koaCors({
 			origin(ctx) {

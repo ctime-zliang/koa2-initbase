@@ -3,9 +3,8 @@ const HomeService = require('../service/home')
 
 class RtestController extends Controller {
 	constructor() {
-		super({
-			controllerName: 'Rtest Controller',
-		})
+		super()
+		this.homeService = new HomeService()
 	}
 
 	async render(ctx) {
@@ -18,8 +17,8 @@ class RtestController extends Controller {
 
 	async rtest(ctx, res) {
 		const query = ctx.query
-		const serRes = await HomeService.invokeService('fetchData')
-		res.setData({
+		const serRes = await this.homeService.fetchData()
+		res.setJson({
 			...serRes,
 			...query,
 			controllerKey: 'Key inserted by Controller',
