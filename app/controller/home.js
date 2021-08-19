@@ -21,7 +21,7 @@ class RtestController extends Controller {
 		res.setJson({
 			...serRes,
 			...query,
-			controllerKey: 'Key inserted by Controller',
+			controllerKey: 'Key added by Controller',
 		})
 	}
 }

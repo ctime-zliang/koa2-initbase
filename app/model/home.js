@@ -8,7 +8,7 @@ class HomeModel extends Mysql {
 
 	async fetchData() {
 		const res = {
-			results: { modelKey: 'Key inserted by Model' },
+			results: { modelKey: 'Key added by Model' },
 		}
 		return res.results
 	}

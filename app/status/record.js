@@ -1,4 +1,4 @@
-const commonStatus = require('../../lib/resStatus')
+const commonStatus = require('../../lib/ResStatus')
 
 module.exports = {
 	controller: {

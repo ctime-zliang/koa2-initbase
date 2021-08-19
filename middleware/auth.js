@@ -1,5 +1,5 @@
 const utils = require('../utils/utils')
-const httpStatus = require('../lib/httpStatus')
+const httpStatus = require('../lib/HttpStatus')
 const Response = require('../lib/Response')
 
 const AUTH_COOKIE_NAME = `LOGIN_AUTH_TAG`
