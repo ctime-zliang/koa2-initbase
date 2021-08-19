@@ -13,7 +13,7 @@ module.exports = [
 			/* after hook */
 		},
 		action: HomeController.invokeAction('rtest'),
-	},	
+	},
 	{
 		desc: '测试 API',
 		method: 'GET',
@@ -32,16 +32,6 @@ module.exports = [
 			console.log(`=== Route: /a/123`)
 			ctx.status = 200
 			ctx.body = `/a/123`
-		},
-	},
-	{
-		desc: '测试 API',
-		method: 'GET',
-		path: '/b/:p',
-		action: ctx => {
-			console.log(`=== Route: /b/:p`)
-			ctx.status = 200
-			ctx.body = `/b/:p`
 		},
 	},
 ]
