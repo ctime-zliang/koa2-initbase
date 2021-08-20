@@ -5,7 +5,7 @@ module.exports = [
 		desc: '测试 API',
 		method: 'GET',
 		path: '/rtest',
-		async before(ctx) {
+		async before(ctx, next) {
 			/* before hook */
 			return true
 		},
