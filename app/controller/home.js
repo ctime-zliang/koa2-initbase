@@ -9,7 +9,6 @@ class RtestController extends Controller {
 
 	async render(ctx) {
 		const title = `koa msvc`
-		/* 渲染视图 */
 		await ctx.render('./home/main', {
 			title: title,
 		})

@@ -4,13 +4,17 @@
 	"description": "",
 	"main": "app.js",
 	"scripts": {
-		"prettier-all": "prettier --write .",
+		"prepare": "husky install",
+		"husky:install": "husky install",
+		"prettier:write-all": "prettier --write .",
+		"prettier:check-all": "prettier --check .",
+		"eslint:check-all": "eslint --ext .js,.ts,.jsx,.tsx .",
+		"eslint:fix-all": "eslint --fix --ext .js,.ts,.jsx,.tsx .",
 		"server:dev": "nodemon --config ./nodemon.json",
 		"server:pmstart": "pm2 start ./config/pm2.config.js",
 		"server:pmrestart": "pm2 restart ./config/pm2.config.js",
 		"server:pmstop": "pm2 stop ./config/pm2.config.js",
-		"server:pmlog": "pm2 log ./config/pm2.config.js",
-		"server:test": "node ./test.js"
+		"server:pmlog": "pm2 log ./config/pm2.config.js"
 	},
 	"author": "",
 	"license": "ISC",
@@ -32,6 +36,8 @@
 	},
 	"devDependencies": {
 		"@types/node": "^15.3.0",
+		"eslint": "^8.5.0",
+		"husky": "^7.0.4",
 		"nodemon": "^2.0.7",
 		"pm2": "^4.5.6",
 		"prettier": "^2.2.1"

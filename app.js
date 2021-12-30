@@ -4,31 +4,32 @@ const koaEjs = require('koa-ejs')
 const init = require('./lib/init')
 const config = require('./config/config')
 const envConfig = require('./config/env.export')
-const errorHandler = require('./error')
-const logger = require('./lib/simple-logger')
-const middleware = require('./middleware')
+const errorHandler = require('./lib/error')
+const logger = require('./lib/simpleLogger')
 
-const app = new koa()
+const startApp = () => {
+	const app = new koa()
 
-init(app)
+	init(app, __dirname)
 
-koaEjs(app, {
-	root: path.join(__dirname, config.baseConfig.viewDir),
-	layout: 'template',
-	viewExt: 'ejs',
-	cache: false,
-	debug: false,
-})
+	koaEjs(app, {
+		root: path.join(__dirname, config.baseConfig.viewDir),
+		layout: 'template',
+		viewExt: 'ejs',
+		cache: false,
+		debug: false,
+	})
 
-middleware(app, __dirname)
+	app.on('error', (error, ctx) => {
+		const result = errorHandler(error, ctx)
+		console.log(result)
+	})
 
-app.on('error', (error, ctx) => {
-	const result = errorHandler(error, ctx)
-	console.log(result)
-})
+	app.listen(envConfig.port, envConfig.host, async () => {
+		logger.trace(`App.running - http://${envConfig.host}:${envConfig.port}`)
+	})
 
-app.listen(envConfig.port, envConfig.host, async () => {
-	logger.trace(`App.running - http://${envConfig.host}:${envConfig.port}`)
-})
+	return app
+}
 
-module.exports = app
+module.exports = startApp()

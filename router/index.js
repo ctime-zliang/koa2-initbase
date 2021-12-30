@@ -5,7 +5,7 @@ const errRouterMap = require('./error')
 const routerList = [webRouter, apiRouter]
 
 module.exports = koaApp => {
-	routerList.forEach((router, index) => {
+	routerList.forEach(router => {
 		koaApp.use(router.routes())
 		koaApp.use(router.allowedMethods())
 	})

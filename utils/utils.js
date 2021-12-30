@@ -142,11 +142,13 @@ utils.getStaticContent = async function (ctx, staticPath) {
  */
 utils.parseUrl = function (url) {
 	const urlObj = {
-		protocol: /^(.+)\:\/\//,
-		host: /\:\/\/(.+?)[\?\#\s\/]/,
-		path: /\w(\/.*?)[\?\#\s]/,
-		query: /\?(.+?)[\#\/\s]/,
-		hash: /\#(\w+)\s$/,
+		/* eslint-disable */
+		protocol: /^(.+)\:\/\//i,
+		host: /\:\/\/(.+?)[\?\#\s\/]/i,
+		path: /\w(\/.*?)[\?\#\s]/i,
+		query: /\?(.+?)[\#\/\s]/i,
+		hash: /\#(\w+)\s$/i,
+		/* eslint-disable */
 	}
 	url += ' '
 	function formatQuery(str) {

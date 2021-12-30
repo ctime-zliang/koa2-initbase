@@ -7,11 +7,11 @@ const zeroize = (num, width) => {
 	return len >= width ? s : '000000'.slice(len - width) + s
 }
 const getTime = () => {
-	var now = new Date()
-	var HH = zeroize(now.getHours(), 2)
-	var mm = zeroize(now.getMinutes(), 2)
-	var ss = zeroize(now.getSeconds(), 2)
-	var msec = zeroize(now.getTime() % 1000, 3)
+	const now = new Date()
+	const HH = zeroize(now.getHours(), 2)
+	const mm = zeroize(now.getMinutes(), 2)
+	const ss = zeroize(now.getSeconds(), 2)
+	const msec = zeroize(now.getTime() % 1000, 3)
 	return HH + ':' + mm + ':' + ss + ' ' + msec
 }
 const substring = body => {

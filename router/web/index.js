@@ -1,4 +1,4 @@
-const routerExec = require('../../lib/RouterExec')
+const routerInit = require('../../lib/routerInit')
 const homeRoutes = require('./home')
 
-module.exports = routerExec([...homeRoutes])
+module.exports = routerInit([...homeRoutes])
