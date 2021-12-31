@@ -11,10 +11,10 @@
 		"eslint:check-all": "eslint --ext .js,.ts,.jsx,.tsx .",
 		"eslint:fix-all": "eslint --fix --ext .js,.ts,.jsx,.tsx .",
 		"server:dev": "nodemon --config ./nodemon.json",
-		"server:pmstart": "pm2 start ./config/pm2.config.js",
-		"server:pmrestart": "pm2 restart ./config/pm2.config.js",
-		"server:pmstop": "pm2 stop ./config/pm2.config.js",
-		"server:pmlog": "pm2 log ./config/pm2.config.js"
+		"server:pm:start": "pm2 start ./config/pm2.config.js",
+		"server:pm:restart": "pm2 restart ./config/pm2.config.js",
+		"server:pm:stop": "pm2 stop ./config/pm2.config.js",
+		"server:pm:log": "pm2 log ./config/pm2.config.js"
 	},
 	"author": "",
 	"license": "ISC",
