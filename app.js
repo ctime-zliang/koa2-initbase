@@ -6,6 +6,7 @@ const config = require('./config/config')
 const envConfig = require('./config/env.export')
 const errorHandler = require('./lib/error')
 const logger = require('./lib/simpleLogger')
+const eventInit = require('./lib/eventInit')
 
 const startApp = () => {
 	const app = new koa()
@@ -20,10 +21,7 @@ const startApp = () => {
 		debug: false,
 	})
 
-	app.on('error', (error, ctx) => {
-		const result = errorHandler(error, ctx)
-		console.log(result)
-	})
+	eventInit(app)
 
 	app.listen(envConfig.port, envConfig.host, async () => {
 		logger.trace(`App.running - http://${envConfig.host}:${envConfig.port}`)
