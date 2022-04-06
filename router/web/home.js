@@ -6,7 +6,6 @@ module.exports = [
 		desc: 'Home Page',
 		method: 'GET',
 		path: '/',
-		// action: HomeController.invokeRender('render'),
 		action: invokeRender(HomeController),
 	},
 ]

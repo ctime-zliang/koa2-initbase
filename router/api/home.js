@@ -13,7 +13,6 @@ module.exports = [
 		async after(ctx) {
 			/* after hook */
 		},
-		// action: HomeController.invokeAction('rtest'),
 		action: invokeAction(HomeController, 'rtest'),
 	},
 	{
