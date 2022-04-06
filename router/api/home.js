@@ -1,3 +1,4 @@
+const { invokeAction } = require('../../lib/Controller')
 const HomeController = require('../../app/controller/home')
 
 module.exports = [
@@ -12,7 +13,8 @@ module.exports = [
 		async after(ctx) {
 			/* after hook */
 		},
-		action: HomeController.invokeAction('rtest'),
+		// action: HomeController.invokeAction('rtest'),
+		action: invokeAction(HomeController, 'rtest'),
 	},
 	{
 		desc: '测试 API',

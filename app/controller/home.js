@@ -25,4 +25,5 @@ class RtestController extends Controller {
 	}
 }
 
-module.exports = new RtestController()
+// module.exports = new RtestController()
+module.exports = RtestController
