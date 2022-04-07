@@ -1,7 +1,7 @@
 const Controller = require('../../lib/Controller')
 const HomeService = require('../service/home')
 
-class RtestController extends Controller {
+class HomeController extends Controller {
 	constructor() {
 		super()
 		this.homeService = new HomeService()
@@ -25,4 +25,4 @@ class RtestController extends Controller {
 	}
 }
 
-module.exports = RtestController
+module.exports = HomeController
