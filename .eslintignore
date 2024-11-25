@@ -1,0 +1,6 @@
+.husky
+doc
+node_modules
+tests
+static
+*.md

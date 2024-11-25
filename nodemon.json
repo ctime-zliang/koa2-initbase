@@ -1,0 +1,9 @@
+{
+	"restartable": "rs",
+	"verbose": true,
+	"ext": "js json",
+	"watch": ["app/", "config/", "lib/", "middleware/", "router/", "static/", "utils/", "app.js", "error.js"],
+	"ignore": ["test/*", "doc/"],
+	"delay": 200,
+	"exec": "node ./app.js"
+}
