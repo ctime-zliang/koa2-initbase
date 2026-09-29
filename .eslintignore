@@ -1,6 +1,12 @@
+.cache
 .husky
+.puppeteer.runtime
 doc
 node_modules
+webpack
+config
 tests
-static
+e2e
+coverage
+*.d.ts
 *.md

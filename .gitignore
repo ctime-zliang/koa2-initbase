@@ -1,3 +1,7 @@
+.cache
+.puppeteer
+coverage
+dist
 node_modules
 node_modules.zip
-dist
+node_modules.rar

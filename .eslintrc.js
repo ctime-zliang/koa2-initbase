@@ -1,8 +1,12 @@
 module.exports = {
 	root: true,
+	parser: '@typescript-eslint/parser',
 	parserOptions: {
+		tsconfigRootDir: __dirname,
+		project: './tsconfig.json',
 		createDefaultProgram: true,
-		ecmaVersion: 2020,
+		parser: 'babel-eslint',
+		ecmaVersion: 2018,
 		sourceType: 'module',
 	},
 	rules: {
@@ -67,6 +71,5 @@ module.exports = {
 	env: {
 		browser: true,
 		node: true,
-		es6: true,
 	},
 }

@@ -1,45 +1,46 @@
 {
 	"name": "koa2-initbase",
 	"version": "1.0.0",
-	"description": "",
-	"main": "app.js",
+	"description": "koa2-initbase",
+	"main": "dist/app.js",
 	"scripts": {
-		"prepare": "husky install",
-		"husky:install": "husky install",
-		"prettier:write-all": "prettier --write .",
-		"prettier:check-all": "prettier --check .",
-		"eslint:check-all": "eslint --ext .js,.ts,.jsx,.tsx .",
-		"eslint:fix-all": "eslint --fix --ext .js,.ts,.jsx,.tsx .",
-		"server:dev": "nodemon --config ./nodemon.json",
-		"server:pm:start": "pm2 start ./config/pm2.config.js",
-		"server:pm:restart": "pm2 restart ./config/pm2.config.js",
-		"server:pm:stop": "pm2 stop ./config/pm2.config.js",
-		"server:pm:log": "pm2 log ./config/pm2.config.js"
+		"prettier:write": "prettier --write .",
+		"prettier:check": "prettier --check .",
+		"nodemon:dev": "nodemon",
+		"copy:view": "cpx \"src/app/view/**/*\" dist/app/view",
+		"copy:view:dev": "cpx \"src/app/view/**/*\" dist/app/view --watch",
+		"build": "npm run clean && tsc -p tsconfig.json && npm run copy:view",
+		"build:dev": "tsc -p tsconfig.json --watch",
+		"start": "node dist/app.js",
+		"start:dev": "nodemon --config nodemon.dist.json",
+		"clean": "rimraf dist"
 	},
+	"keywords": [
+		"koa",
+		"koa2",
+		"typescript"
+	],
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"cross-env": "^5.1.4",
-		"ejs": "^3.1.6",
-		"http-proxy": "~1.16.2",
-		"https": "^1.0.0",
-		"identity-obj-proxy": "^3.0.0",
-		"koa": "^2.13.1",
-		"koa-bodyparser": "^4.3.0",
-		"koa-compose": "^4.1.0",
-		"koa-cors": "0.0.16",
+		"@koa/cors": "^5.0.0",
+		"koa": "^2.15.3",
+		"koa-bodyparser": "^4.4.1",
 		"koa-ejs": "^4.3.0",
-		"koa-router": "^10.0.0",
-		"koa-static": "^5.0.0",
-		"koa-views": "^7.0.1",
-		"mysql": "^2.18.1"
+		"koa-router": "^12.0.1"
 	},
 	"devDependencies": {
-		"@types/node": "^15.3.0",
-		"eslint": "^8.5.0",
-		"husky": "^7.0.4",
-		"nodemon": "^2.0.7",
-		"pm2": "^4.5.6",
-		"prettier": "^2.2.1"
+		"@types/koa": "^2.15.0",
+		"@types/koa__cors": "^5.0.1",
+		"@types/koa-bodyparser": "^4.3.12",
+		"@types/koa-ejs": "^4.3.3",
+		"@types/koa-router": "^7.4.8",
+		"@types/node": "^22.9.0",
+		"cpx2": "^8.0.2",
+		"nodemon": "^3.1.7",
+		"prettier": "^3.9.8",
+		"rimraf": "^6.0.1",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.6.3"
 	}
 }
