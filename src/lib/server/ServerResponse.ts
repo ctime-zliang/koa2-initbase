@@ -125,7 +125,7 @@ export class ServerResponse {
 	/**
 	 * 设置视图渲染
 	 * 		- 默认对传入模板的 params 做深度 HTML 转义, 消除反射型 XSS
-	 * 		- 若某些字段需要输出原始 HTML(受信内容), 可将 escape 置为 false 并自行保证安全
+	 * 		- 若某些字段需要输出原始 HTML, 可将 escape 置为 false
 	 */
 	public setView(view: string, params: Record<string, any> = {}, escape: boolean = true): ServerResponse {
 		this._isSet = true

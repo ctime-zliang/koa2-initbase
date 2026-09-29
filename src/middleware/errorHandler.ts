@@ -21,7 +21,7 @@ function resolveStatus(error: any): number {
 
 /**
  * 最外层统一错误处理中间件
- * 		- 处理所有非路由中间件(securityHeaders / compress / bodyParser / koaStatic 等)抛出的异常
+ * 		- 处理所有非路由中间件 (securityHeaders / compress / bodyParser / koaStatic 等)抛出的异常
  * 		- 统一输出为标准 JSON 响应体, 通过 ctx.app.emit('error') 提交错误
  */
 export function errorHandler(): (ctx: TKoaContextExtend, next: koa.Next) => Promise<void> {

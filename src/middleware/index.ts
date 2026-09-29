@@ -39,7 +39,7 @@ export function middleware(app: koa): void {
 				return corsConfig.credentials
 			},
 			/**
-			 * 允许的请求来源: 命中白名单才回显具体 Origin; 配置 '*' 时放行任意来源(勿同时开启 credentials)
+			 * 允许的请求来源: 命中白名单才回显具体 Origin; 配置 "*" 时放行任意来源(勿同时开启 credentials)
 			 */
 			origin: (ctx: koa.Context): string => {
 				const requestOrigin: string = ctx.get('Origin') || ''

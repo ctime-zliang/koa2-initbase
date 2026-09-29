@@ -73,16 +73,16 @@ type TKoaStaticOptions = {
  * koaStatic 的配置式入参
  *
  * 相比直接传入绝对路径 root, 这里通过 path 声明一个"相对源码根目录"的静态资源目录, 由模块内部自动解析成绝对路径
- *      示例: { path: '/app/view/static' } -> 解析为 <src|dist>/app/view/static
+ *      示例: { path: "/app/view/static" } -> 解析为 <src|dist>/app/view/static
  */
 type TKoaStaticConfig = TKoaStaticOptions & {
 	/**
 	 * 静态资源目录, 相对源码根目录; 开头的 "/" 可有可无, 均视为相对源码根目录
-	 *      示例: '/app/view/static' 或 'app/view/static'
+	 *      示例: "/app/view/static" 或 "app/view/static"
 	 */
 	path: string
 	/**
-	 * 解析 `path` 时使用的基准目录
+	 * 解析 path 时使用的基准目录
 	 *      默认: 源码根目录
 	 */
 	base?: string
