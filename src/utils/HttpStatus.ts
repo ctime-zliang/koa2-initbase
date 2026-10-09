@@ -11,6 +11,15 @@ export class HttpStatus {
 		err.status = status
 		throw err
 	}
+
+	public static messageByStatus(status: number): string {
+		const items: Array<THttpStatusItem> = Object.values(httpStatus) as Array<THttpStatusItem>
+		const hit: THttpStatusItem | undefined = items.find((item: THttpStatusItem): boolean => {
+			return item?.status === status
+		})
+		return hit ? hit.message() : httpStatus.ServerError.message()
+	}
+
 	/**
 	 * 1xx Informational
 	 */

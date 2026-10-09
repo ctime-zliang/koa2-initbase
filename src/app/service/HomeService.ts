@@ -1,8 +1,10 @@
+import { BaseService } from '../../lib/service/BaseService'
 import { HomeModel } from '../model/HomeModel'
 
-export class HomeService {
-	private homeModel: HomeModel
+export class HomeService extends BaseService {
+	private readonly homeModel: HomeModel
 	constructor() {
+		super()
 		this.homeModel = new HomeModel()
 	}
 

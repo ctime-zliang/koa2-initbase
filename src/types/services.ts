@@ -10,6 +10,12 @@ export type TKoaRouteItem = {
 	before?: (ctx: TKoaContextExtend, next: koa.Next) => Promise<boolean>
 	after?: (ctx: TKoaContextExtend) => Promise<void>
 }
+export type TKoaRouteGroup = {
+	prefix: string
+	desc?: string
+	routes: Array<TKoaRouteItem>
+}
+export type TKoaRouteEntry = TKoaRouteItem | TKoaRouteGroup
 
 export type TControllerMeta = {
 	actionName: string

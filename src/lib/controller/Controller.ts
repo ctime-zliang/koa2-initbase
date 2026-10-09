@@ -1,8 +1,8 @@
 import { TKoaContextExtend } from '../../types/services'
-import { httpStatus } from '../../utils/HttpStatus'
+import { httpStatus, HttpStatus } from '../../utils/HttpStatus'
 import { responseStatus } from '../../utils/ResponseStatus'
 import { IS_PRODUCTION } from '../../config/config'
-import { ServerResponse } from '../server/ServerResponse'
+import { ServerResponse } from '../response/ServerResponse'
 import { BaseController } from './BaseController'
 
 export abstract class Controller extends BaseController {
@@ -10,6 +10,16 @@ export abstract class Controller extends BaseController {
 	constructor(options: Record<string, any> = {}) {
 		super()
 		this._options = { ...options }
+	}
+
+	protected applyServiceResult<T = any>(serRes: ServerResponse, serviceResult: { status: number; message?: string; data?: T }): boolean {
+		const status: number = serviceResult?.status ?? httpStatus.ServerError.status
+		const isOK: boolean = status === httpStatus.OK.status
+		serRes.status = status
+		serRes.code = isOK ? responseStatus.OK.status : responseStatus.ServiceError.status
+		serRes.message = serviceResult?.message || HttpStatus.messageByStatus(status)
+		serRes.setJson(isOK ? (serviceResult?.data ?? null) : null)
+		return isOK
 	}
 
 	public invokeRender(): (ctx: TKoaContextExtend) => Promise<void> {
@@ -52,7 +62,7 @@ export abstract class Controller extends BaseController {
 			} catch (e: any) {
 				serRes.status = httpStatus.ServerError.status
 				serRes.code = httpStatus.ServerError.status
-				serRes.msg = httpStatus.ServerError.message()
+				serRes.message = httpStatus.ServerError.message()
 				serRes.setJson(null)
 				await serRes.flush(ctx)
 				ctx.app.emit('error', e, ctx)

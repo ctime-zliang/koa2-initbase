@@ -1,14 +1,17 @@
 import { Controller } from '../../lib/controller/Controller'
-import { ServerResponse } from '../../lib/server/ServerResponse'
+import { ServerResponse } from '../../lib/response/ServerResponse'
 import { TKoaContextExtend } from '../../types/services'
 import { HomeService } from '../service/HomeService'
+import { HomeStatus } from '../status/HomeStatus'
 
 export class HomeController extends Controller {
 	private readonly _viewTemplatePath: string
-	private homeService: HomeService
+	private readonly homeStatus: HomeStatus
+	private readonly homeService: HomeService
 	constructor() {
 		super()
 		this._viewTemplatePath = `template/home/content`
+		this.homeStatus = new HomeStatus()
 		this.homeService = new HomeService()
 	}
 

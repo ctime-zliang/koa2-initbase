@@ -7,7 +7,7 @@ import { sanitizeDeep } from '../../utils/sanitize'
 export class ServerResponse {
 	private _isSet: boolean
 	private _data: any
-	private _msg: string
+	private _message: string
 	private _status: number
 	private _code: number
 	private _outType: EDocumentType
@@ -16,7 +16,7 @@ export class ServerResponse {
 		this._status = httpStatus.OK.status
 		this._data = null
 		this._code = responseStatus.OK.status
-		this._msg = responseStatus.OK.message()
+		this._message = responseStatus.OK.message()
 		this._outType = EDocumentType.UNKNOWN
 	}
 
@@ -31,11 +31,11 @@ export class ServerResponse {
 		return this._data
 	}
 
-	public set msg(value: string) {
-		this._msg = value
+	public set message(value: string) {
+		this._message = value
 	}
-	public get msg(): string {
-		return this._msg
+	public get message(): string {
+		return this._message
 	}
 
 	public set status(value: number) {
@@ -66,7 +66,7 @@ export class ServerResponse {
 	): void {
 		this._status = status
 		this._code = code
-		this._msg = msg
+		this._message = msg
 		this._data = null
 		this._outType = EDocumentType.UNKNOWN
 	}
@@ -150,13 +150,13 @@ export class ServerResponse {
 
 	public toJSON(): {
 		code: number
-		msg: string
+		message: string
 		data: any
 		time: number
 	} {
 		return {
 			code: this.code,
-			msg: this.msg,
+			message: this.message,
 			data: this.data,
 			time: Date.now(),
 		}
