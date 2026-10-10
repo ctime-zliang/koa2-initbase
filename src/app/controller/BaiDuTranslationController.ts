@@ -1,7 +1,7 @@
 import { Controller } from '../../lib/controller/Controller'
 import { ServerResponse } from '../../lib/response/ServerResponse'
 import { TKoaContextExtend } from '../../types/services'
-import { BaiDuTranslationService } from '../service/BaidUTranslationService'
+import { BaiDuTranslationService } from '../service/BaiDuTranslationService'
 import { BaiDuTranslationStatus } from '../status/BaiDuTranslationStatus'
 
 export class BaiDuTranslationController extends Controller {

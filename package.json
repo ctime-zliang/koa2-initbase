@@ -6,13 +6,8 @@
 	"scripts": {
 		"prettier:write": "prettier --write .",
 		"prettier:check": "prettier --check .",
-		"nodemon:dev": "nodemon",
-		"copy:view": "cpx \"src/app/view/**/*\" dist/app/view",
-		"copy:view:dev": "cpx \"src/app/view/**/*\" dist/app/view --watch",
-		"build": "npm run clean && tsc -p tsconfig.json && npm run copy:view",
-		"build:dev": "tsc -p tsconfig.json --watch",
-		"start": "node dist/app.js",
-		"start:dev": "nodemon --config nodemon.dist.json",
+		"nodemon:koa-app:dev": "nodemon",
+		"build:koa-app:dev": "tsc -p tsconfig.json --watch",
 		"clean": "rimraf dist"
 	},
 	"keywords": [
@@ -27,7 +22,8 @@
 		"koa": "^2.15.3",
 		"koa-bodyparser": "^4.4.1",
 		"koa-ejs": "^4.3.0",
-		"koa-router": "^12.0.1"
+		"koa-router": "^12.0.1",
+		"openai": "^7.32.0"
 	},
 	"devDependencies": {
 		"@types/koa": "^2.15.0",

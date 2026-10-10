@@ -1,4 +1,4 @@
-document.addEventListener(`DOMContentLoaded`, function () {
+function getAPITest() {
 	window
 		.fetch('home/getAPITest', {
 			method: 'GET',
@@ -13,6 +13,9 @@ document.addEventListener(`DOMContentLoaded`, function () {
 				uConsole(result)
 			})
 		})
+}
+
+function postAPITest() {
 	window
 		.fetch('home/postAPITest', {
 			method: 'POST',
@@ -30,7 +33,9 @@ document.addEventListener(`DOMContentLoaded`, function () {
 				uConsole(result)
 			})
 		})
+}
 
+function baiduTranslation() {
 	window
 		.fetch('translation/baiduTranslation', {
 			method: 'POST',
@@ -62,4 +67,31 @@ document.addEventListener(`DOMContentLoaded`, function () {
 				uConsole(result)
 			})
 		})
+}
+
+function deepseekTest() {
+	window
+		.fetch('openai/deepseek', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+			},
+			body: JSON.stringify({
+				tag: 'sk-1994',
+			}),
+		})
+		.then(res => {
+			uConsole(res)
+			res.json().then(result => {
+				uConsole(result)
+			})
+		})
+}
+
+document.addEventListener(`DOMContentLoaded`, function () {
+	getAPITest()
+	postAPITest()
+	baiduTranslation()
+	// deepseekTest()
 })
