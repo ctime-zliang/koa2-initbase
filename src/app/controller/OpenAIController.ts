@@ -5,7 +5,7 @@ import { TKoaContextExtend } from '../../types/services'
 
 const openai: OpenAI = new OpenAI({
 	baseURL: 'https://api.deepseek.com',
-	apiKey: 'sk-8a83d99e25744a2e95c1620c889718e[1-10]',
+	apiKey: '',
 })
 
 export class OpenAIController extends Controller {
